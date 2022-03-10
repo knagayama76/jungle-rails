@@ -6,8 +6,28 @@
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
+    <h5>
+     <% @order.line_items.each do |line_item| %>
+     <%= line_item.product.inspect %>
+     <% end %>
+    </h5>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
 </section>
+
+
+# Once the user places their order successfully, they are taken to the orders#show page. However, this page feels incomplete. It does not give them much detail about what they just ordered.
+
+# We've been asked to change the orders#show page to contain:
+
+# The line items in the order and:
+# Their image, name and description
+# Their respective quantities and line item totals
+# The final amount for the order
+# The email that was used
+# While formatting and design is important, please be cognizant of the time estimate and avoid wasting too much time on that part. That said, you should be consistent and leverage bootstrap just like the other (eg: My Cart) pages do.
+
+# Tips
+# Consider using a partial for rendering each line_item on the order details page. This will keep your show template cleaner.
