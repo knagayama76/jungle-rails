@@ -6,16 +6,37 @@
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
-    <h5>
-     <% @order.line_items.each do |line_item| %>
-     <%= line_item.product.inspect %>
-     <% end %>
-    </h5>
+     <%= @order.email %>
+     <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th colspan="2">Product</th>
+          <th>Description</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render 'line_item' %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4">
+            TOTAL:
+          </th>
+          <th>
+            $<%= @order.total_cents / 100.0 %>
+          </th>
+        </tr>
+      </tfoot>
+     </table>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
 </section>
+
+
 
 
 # Once the user places their order successfully, they are taken to the orders#show page. However, this page feels incomplete. It does not give them much detail about what they just ordered.
