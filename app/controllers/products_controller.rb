@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  before_filter :authorize
+  # before_filter :authorize
 
   def cool
   end
